@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Bookcard } from "src/entities/Bookcard";
-import { Navbar } from "src/widgets/Navbar";
-import { Sidebar } from "src/widgets/Sidebar";
+import { Navigation } from "src/widgets/Navigation";
+import { AppRouter } from "./providers/router";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
@@ -12,9 +11,16 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar toggleSidebar={toggleSidebar} />
-      <Bookcard title="title" author="author" year={2022} description="desc" />
-      <Sidebar isOpen={isSidebarOpen} handleClose={toggleSidebar} />
+      <div className="app_navbar">
+        <Navigation
+          toggleSidebar={toggleSidebar}
+          isOpen={isSidebarOpen}
+          handleClose={toggleSidebar}
+        />
+      </div>
+      <div className="app_body">
+        <AppRouter />
+      </div>
     </div>
   );
 }

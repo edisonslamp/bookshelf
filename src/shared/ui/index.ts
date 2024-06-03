@@ -1,3 +1,4 @@
+export { SearchAppBar } from "./AppBar/AppBar";
 export { MultiCard } from "./MultiCard/MultiCard";
-export { SearchAppBar } from "./SearchAppBar/SearchAppBar";
+export { SpacingGrid } from "./SpacingGrid/SpacingGrid";
 export { TemporaryDrawer } from "./TemporaryDrawer/TemporaryDrawer";
