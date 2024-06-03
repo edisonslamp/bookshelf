@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { Navbar } from "src/widgets/Navbar";
-import { Sidebar } from "src/widgets/Sidebar";
+import { Navigation } from "src/widgets/Navigation";
 import { AppRouter } from "./providers/router";
 
 function App() {
@@ -13,11 +11,16 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar toggleSidebar={toggleSidebar} />
-      <Sidebar isOpen={isSidebarOpen} handleClose={toggleSidebar} />
-      <Router>
+      <div className="app_navbar">
+        <Navigation
+          toggleSidebar={toggleSidebar}
+          isOpen={isSidebarOpen}
+          handleClose={toggleSidebar}
+        />
+      </div>
+      <div className="app_body">
         <AppRouter />
-      </Router>
+      </div>
     </div>
   );
 }

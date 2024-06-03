@@ -25,7 +25,8 @@ export const MultiCard: FC<MultiCardProps> = ({
         <CardMedia
           component="img"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          width="140"
+          image="/"
           alt="green iguana"
         />
         <CardContent>
@@ -43,7 +44,7 @@ export const MultiCard: FC<MultiCardProps> = ({
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions sx={{ height: "3rem" }}>
         <Button size="small" color="primary">
           Share
         </Button>
