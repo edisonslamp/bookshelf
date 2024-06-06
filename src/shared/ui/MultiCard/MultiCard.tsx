@@ -25,17 +25,27 @@ export const MultiCard: FC<MultiCardProps> = ({
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
+          sx={{ objectFit: "fill" }}
           component="img"
-          height="140"
-          width="140"
+          height="500px"
+          width="auto"
           image={image}
-          alt="green iguana"
+          alt="test alt"
         />
-        <CardContent sx={{ width: "140px" }}>
+        <CardContent sx={{ height: "140px" }}>
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            gutterBottom
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
             {description}
           </Typography>
           <Typography variant="body2" color="text.secondary">
