@@ -1,15 +1,16 @@
 import { FC } from "react";
 import { MultiCard } from "src/shared/ui";
-import { BookcardType } from "../model/BookcardType";
+import { Book } from "../model/Book";
 
 // questionable move
-interface BookcardProps extends BookcardType {}
+interface BookcardProps extends Book {}
 
 export const Bookcard: FC<BookcardProps> = ({
   description,
   title,
   author,
   year,
+  book_image,
 }) => {
   return (
     <>
@@ -18,6 +19,7 @@ export const Bookcard: FC<BookcardProps> = ({
         title={title}
         author={author}
         year={year}
+        image={book_image}
       />
     </>
   );
