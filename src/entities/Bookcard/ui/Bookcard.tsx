@@ -10,6 +10,7 @@ export const Bookcard: FC<BookcardProps> = ({
   title,
   author,
   year,
+  book_image,
 }) => {
   return (
     <>
@@ -18,6 +19,7 @@ export const Bookcard: FC<BookcardProps> = ({
         title={title}
         author={author}
         year={year}
+        image={book_image}
       />
     </>
   );

@@ -14,14 +14,14 @@ export const BookGrid: FC<BookGridProps> = ({ books }) => {
     >
       <Grid item xs={8}>
         <Grid container justifyContent="center" spacing={1}>
-          {books?.map((book) => (
-            <Grid key={book.id} item>
+          {books?.map((book, index) => (
+            <Grid key={index} item>
               <Bookcard
-                id={book.id}
                 year={book.year}
                 author={book.author}
                 title={book.title}
                 description={book.description}
+                book_image={book.book_image}
               />
             </Grid>
           ))}

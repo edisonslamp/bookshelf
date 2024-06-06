@@ -11,6 +11,7 @@ interface MultiCardProps {
   title: string;
   author: string;
   year: number;
+  image: string;
 }
 
 export const MultiCard: FC<MultiCardProps> = ({
@@ -18,6 +19,7 @@ export const MultiCard: FC<MultiCardProps> = ({
   title,
   author,
   year,
+  image,
 }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -26,10 +28,10 @@ export const MultiCard: FC<MultiCardProps> = ({
           component="img"
           height="140"
           width="140"
-          image="/"
+          image={image}
           alt="green iguana"
         />
-        <CardContent>
+        <CardContent sx={{ width: "140px" }}>
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
