@@ -1,9 +1,9 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import { Autocomplete, InputBase } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import InputBase from "@mui/material/InputBase";
 import { alpha, styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -82,9 +82,30 @@ export const SearchAppBar: FC<SearchAppBarProps> = ({ onClick }) => {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase
+            {/* <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+            /> */}
+            <Autocomplete
+              sx={{
+                "& .MuiAutocomplete-clearIndicator": {
+                  color: "white",
+                },
+              }}
+              freeSolo
+              options={[1, 2, 3].map((value) => value.toString())}
+              renderInput={(params) => {
+                //eslint-disable-next-line
+                const { InputLabelProps, InputProps, ...rest } = params;
+                return (
+                  <StyledInputBase
+                    sx={{ minWidth: 150 }}
+                    {...params.InputProps}
+                    {...rest}
+                    placeholder="Search…"
+                  />
+                );
+              }}
             />
           </Search>
         </Toolbar>
