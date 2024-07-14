@@ -1,3 +1,9 @@
+export type BookResponse = {
+  kind: "books#volumes";
+  items: [Book];
+  totalItems: number;
+};
+
 export type Book = {
   kind: "books#volume";
   id: string;

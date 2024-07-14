@@ -1,2 +1,2 @@
-import useStore from "./config/store";
-export default useStore;
+import useBookStore from "./config/store";
+export default useBookStore;

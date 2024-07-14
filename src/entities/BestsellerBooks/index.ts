@@ -1,2 +1,2 @@
 export type { BestsellerBook } from "./model/types";
-export { BestsellerBooks } from "./ui/Bookcard";
+export { BestsellerBooks } from "./ui/BestsellerBooks";

@@ -6,7 +6,7 @@ import { BestsellerBook } from "../model/types";
 // questionable move
 interface BookcardProps extends BestsellerBook {
   year: string;
-  author: string;
+  author: string[];
   description: string;
   book_image: string;
   title: string;

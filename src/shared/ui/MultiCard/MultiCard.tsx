@@ -9,7 +9,7 @@ import { FC } from "react";
 interface MultiCardProps {
   description: string;
   title: string;
-  author: string;
+  author: string[];
   year: string;
   image: string;
 }
