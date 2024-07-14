@@ -1,3 +1,0 @@
-const SearchedBooks = () => {
-  return <></>;
-};
