@@ -3,11 +3,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import InputBase from "@mui/material/InputBase";
 import { alpha, styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -34,28 +33,12 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   justifyContent: "center",
 }));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  width: "100%",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
-  },
-}));
-
 interface SearchAppBarProps {
   onClick: () => void;
+  children?: ReactNode;
 }
 
-export const SearchAppBar: FC<SearchAppBarProps> = ({ onClick }) => {
+export const SearchAppBar: FC<SearchAppBarProps> = ({ onClick, children }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -82,10 +65,7 @@ export const SearchAppBar: FC<SearchAppBarProps> = ({ onClick }) => {
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
+            {children}
           </Search>
         </Toolbar>
       </AppBar>

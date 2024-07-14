@@ -1,9 +1,9 @@
 import Grid from "@mui/material/Grid";
 import { FC } from "react";
-import { Book, Bookcard } from "src/entities/Bookcard";
+import { BestsellerBook, BestsellerBooks } from "src/entities/BestsellerBooks";
 
 interface BookGridProps {
-  books?: Book[];
+  books?: BestsellerBook[];
 }
 export const BookGrid: FC<BookGridProps> = ({ books }) => {
   return (
@@ -16,7 +16,7 @@ export const BookGrid: FC<BookGridProps> = ({ books }) => {
         <Grid container justifyContent="center" spacing={1}>
           {books?.map((book, index) => (
             <Grid key={index} item>
-              <Bookcard
+              <BestsellerBooks
                 year={book.year}
                 author={book.author}
                 title={book.title}

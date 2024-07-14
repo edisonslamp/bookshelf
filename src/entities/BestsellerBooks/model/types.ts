@@ -1,7 +1,7 @@
-export type Book = {
+export type BestsellerBook = {
   description: string;
   title: string;
   author: string;
-  year: number;
+  year: string;
   book_image: string;
 };

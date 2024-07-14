@@ -10,7 +10,7 @@ interface MultiCardProps {
   description: string;
   title: string;
   author: string;
-  year: number;
+  year: string;
   image: string;
 }
 

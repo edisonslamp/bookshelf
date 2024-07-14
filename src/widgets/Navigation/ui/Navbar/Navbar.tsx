@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Search } from "src/features/SearchBook";
 import { SearchAppBar } from "src/shared/ui";
 
 interface NavbarProps {
@@ -8,7 +9,9 @@ interface NavbarProps {
 export const Navbar: FC<NavbarProps> = ({ toggleSidebar }) => {
   return (
     <div>
-      <SearchAppBar onClick={toggleSidebar} />
+      <SearchAppBar onClick={toggleSidebar}>
+        <Search />
+      </SearchAppBar>
     </div>
   );
 };
