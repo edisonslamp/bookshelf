@@ -3,12 +3,12 @@ import { create } from "zustand";
 
 interface BookStore {
   books: Book[];
-  setBooks: (books: Book[]) => void;
+  setBooks: (books: Book[] | undefined) => void;
 }
 
 const useBookStore = create<BookStore>((set) => ({
   books: [],
-  setBooks: (books: Book[]) => set({ books }),
+  setBooks: (books: Book[] | undefined) => set({ books }),
 }));
 
 export default useBookStore;

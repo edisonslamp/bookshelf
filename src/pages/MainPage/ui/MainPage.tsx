@@ -1,5 +1,5 @@
 import { useBestsellerBooks } from "src/shared/lib";
-import { BookGrid } from "src/widgets/BookGrid";
+import { BestsellerGrid } from "src/widgets/BestsellerGrid";
 
 export const MainPage = () => {
   const { bestsellerBooks, isLoading, isError } = useBestsellerBooks();
@@ -11,7 +11,11 @@ export const MainPage = () => {
   return (
     <>
       <h1>Top bestsellers</h1>
-      {isLoading ? <h1>Loading...</h1> : <BookGrid books={bestsellerBooks} />}
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <BestsellerGrid books={bestsellerBooks} />
+      )}
     </>
   );
 };

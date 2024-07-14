@@ -1,5 +1,6 @@
 import { InputBase, styled } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useBookStore from "src/app/providers/StoreProvider/config/store";
 import { getBook } from "src/shared/api";
 import { EndAdornment } from "src/shared/ui";
@@ -24,6 +25,7 @@ const StyledSearchInput = styled(InputBase)(({ theme }) => ({
 export const Search = () => {
   const [searchValue, setSearch] = useState("");
   const setBook = useBookStore((state) => state.setBooks);
+  const navigate = useNavigate();
   // need types here for books and add the books to state manager
   //   const [books, setBooks] = useState([]);
 
@@ -40,6 +42,7 @@ export const Search = () => {
       setSearch("");
       e.currentTarget.blur();
       getBook(searchValue).then(setBook);
+      navigate("/book");
     }
   };
 

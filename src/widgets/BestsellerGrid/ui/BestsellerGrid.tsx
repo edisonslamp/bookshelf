@@ -2,10 +2,10 @@ import Grid from "@mui/material/Grid";
 import { FC } from "react";
 import { BestsellerBook, BestsellerBooks } from "src/entities/BestsellerBooks";
 
-interface BookGridProps {
+interface BestsellerGridProps {
   books?: BestsellerBook[];
 }
-export const BookGrid: FC<BookGridProps> = ({ books }) => {
+export const BestsellerGrid: FC<BestsellerGridProps> = ({ books }) => {
   return (
     <Grid
       sx={{ flexGrow: 1, justifyContent: "space-around" }}
