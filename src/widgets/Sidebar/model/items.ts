@@ -18,7 +18,7 @@ export const SidebarItemList: SidebarItemType[] = [
     Icon: FavoriteIcon,
   },
   {
-    path: "/read",
+    path: "/wishlist",
     text: "Want to read",
     Icon: BookmarkIcon,
   },
