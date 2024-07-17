@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { Navbar } from "../Navbar/Navbar";
-import { Sidebar } from "../Sidebar/Sidebar";
+import { Navbar } from "../../../Navbar/ui/Navbar";
+import { Sidebar } from "../../../Sidebar/ui/Sidebar/Sidebar";
 import cls from "./Navigation.module.scss";
 
 interface NavigationProps {
