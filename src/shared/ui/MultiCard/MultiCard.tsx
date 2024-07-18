@@ -12,6 +12,7 @@ interface MultiCardProps {
   author: string[];
   year: string;
   image: string;
+  handleToFavorites: () => void;
 }
 
 export const MultiCard: FC<MultiCardProps> = ({
@@ -20,6 +21,7 @@ export const MultiCard: FC<MultiCardProps> = ({
   author,
   year,
   image,
+  handleToFavorites,
 }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -60,7 +62,7 @@ export const MultiCard: FC<MultiCardProps> = ({
         <Button size="small" color="primary">
           Share
         </Button>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites" onClick={handleToFavorites}>
           <FavoriteIcon />
         </IconButton>
       </CardActions>

@@ -10,6 +10,7 @@ interface BookcardProps extends BestsellerBook {
   description: string;
   book_image: string;
   title: string;
+  handleToFavorites: () => void;
 }
 
 export const BestsellerBooks: FC<BookcardProps> = ({
@@ -18,10 +19,12 @@ export const BestsellerBooks: FC<BookcardProps> = ({
   description,
   book_image,
   title,
+  handleToFavorites,
 }) => {
   return (
     <>
       <MultiCard
+        handleToFavorites={handleToFavorites}
         description={description}
         title={title}
         author={author}

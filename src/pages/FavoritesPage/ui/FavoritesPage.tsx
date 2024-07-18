@@ -1,3 +1,7 @@
+import useBookStore from "src/app/providers/StoreProvider";
+import { BestsellerGrid } from "src/widgets/BestsellerGrid";
+
 export const FavoritesPage = () => {
-  return <div>Favorites Page</div>;
+  const favorites = useBookStore((state) => state.favorites);
+  return <BestsellerGrid books={favorites} />;
 };

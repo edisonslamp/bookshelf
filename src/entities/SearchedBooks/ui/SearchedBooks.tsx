@@ -16,8 +16,12 @@ export const SearchedBooks: FC<SearchedBooks> = ({
   book_image,
   year,
 }) => {
+  const handleToFavorites = () => {
+    console.log("handleToFavorites");
+  };
   return (
     <MultiCard
+      handleToFavorites={handleToFavorites}
       title={title}
       author={author}
       description={description}
