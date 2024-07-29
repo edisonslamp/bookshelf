@@ -1,10 +1,10 @@
 export type BookResponse = {
   kind: "books#volumes";
-  items: [Book];
+  items: [Books];
   totalItems: number;
 };
 
-export type Book = {
+export type Books = {
   kind: "books#volume";
   id: string;
   etag: string;

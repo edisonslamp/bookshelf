@@ -1,12 +1,15 @@
 import Grid from "@mui/material/Grid";
 import { FC } from "react";
-import { SearchedBooks } from "src/entities/SearchedBooks";
-import { Book } from "src/shared/api";
+import useBookStore from "src/app/providers/StoreProvider";
+import { Book } from "src/entities/Book";
+import { Books } from "src/shared/api";
 
-interface SearchedGridProps {
-  books?: Book[];
+interface BookGridProps {
+  books?: Books[];
 }
-export const SearchedGrid: FC<SearchedGridProps> = ({ books }) => {
+export const BookGrid: FC<BookGridProps> = ({ books }) => {
+  const setFavorites = useBookStore((state) => state.setFavorites);
+
   return (
     <Grid
       sx={{ flexGrow: 1, justifyContent: "space-around" }}
@@ -17,7 +20,10 @@ export const SearchedGrid: FC<SearchedGridProps> = ({ books }) => {
         <Grid container justifyContent="center" spacing={1}>
           {books?.map((book, index) => (
             <Grid key={index} item>
-              <SearchedBooks
+              <Book
+                handleToFavorites={() => {
+                  setFavorites(book);
+                }}
                 title={book.volumeInfo.title}
                 description={book.volumeInfo.description}
                 year={book.volumeInfo.publishedDate}

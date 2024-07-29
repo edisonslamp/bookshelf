@@ -1,21 +1,17 @@
 import { useBestsellerBooks } from "src/shared/lib";
-import { BestsellerGrid } from "src/widgets/BestsellerGrid";
+import { BookGrid } from "src/widgets/BookGrid";
 
 export const MainPage = () => {
-  const { bestsellerBooks, isLoading, isError } = useBestsellerBooks();
+  const { bestsellerBooks, isLoading, error } = useBestsellerBooks();
 
-  if (isError) {
-    return <h1>{isError.message}</h1>;
+  if (error) {
+    return <h1>{error.response?.statusText}</h1>;
   }
 
   return (
     <>
       <h1>Top bestsellers</h1>
-      {isLoading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <BestsellerGrid books={bestsellerBooks} />
-      )}
+      {isLoading ? <h1>Loading...</h1> : <BookGrid books={bestsellerBooks} />}
     </>
   );
 };
