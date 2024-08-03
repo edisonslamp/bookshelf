@@ -1,5 +1,4 @@
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Button, CardActionArea, CardActions, IconButton } from "@mui/material";
+import { Button, CardActionArea, CardActions } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -12,7 +11,7 @@ interface MultiCardProps {
   author: string[];
   year: string;
   image: string;
-  handleToFavorites: () => void;
+  ToFavoriteIcon?: React.ReactNode;
 }
 
 export const MultiCard: FC<MultiCardProps> = ({
@@ -21,7 +20,7 @@ export const MultiCard: FC<MultiCardProps> = ({
   author,
   year,
   image,
-  handleToFavorites,
+  ToFavoriteIcon,
 }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -62,9 +61,7 @@ export const MultiCard: FC<MultiCardProps> = ({
         <Button size="small" color="primary">
           Share
         </Button>
-        <IconButton aria-label="add to favorites" onClick={handleToFavorites}>
-          <FavoriteIcon />
-        </IconButton>
+        {ToFavoriteIcon}
       </CardActions>
     </Card>
   );

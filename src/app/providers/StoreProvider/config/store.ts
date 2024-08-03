@@ -1,13 +1,13 @@
-import { BestsellerBook } from "src/entities/BestsellerBooks";
-import { Book } from "src/shared/api";
+import { Books } from "src/shared/api";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
 interface BookStore {
-  books: Book[];
-  favorites: BestsellerBook[];
-  setBooks: (books: Book[] | undefined) => void;
-  setFavorites: (favoriteBook: BestsellerBook) => void;
+  books: Books[];
+  favorites: Books[];
+  setBooks: (books: Books[] | undefined) => void;
+  setFavorites: (favoriteBook: Books) => void;
+  removeFavorites: (favoriteBook: Books) => void;
 }
 
 const useBookStore = create<BookStore>()(
@@ -15,13 +15,20 @@ const useBookStore = create<BookStore>()(
     (set) => ({
       books: [],
       favorites: [],
-      setBooks: (books: Book[] | undefined) => set({ books }),
-      setFavorites: (favoriteBook: BestsellerBook) => {
+      setBooks: (books: Books[] | undefined) => set({ books }),
+      setFavorites: (favoriteBook: Books) => {
         set((state) =>
-          state.favorites.includes(favoriteBook)
+          state.favorites.some((book) => book.id === favoriteBook.id)
             ? { favorites: [...state.favorites] }
             : { favorites: [...state.favorites, favoriteBook] }
         );
+      },
+      removeFavorites: (favoriteBook: Books) => {
+        set((state) => ({
+          favorites: state.favorites.filter(
+            (book) => book.id !== favoriteBook.id
+          ),
+        }));
       },
     }),
     {

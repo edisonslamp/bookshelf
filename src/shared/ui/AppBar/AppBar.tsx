@@ -7,6 +7,7 @@ import { alpha, styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { FC, ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -59,7 +60,9 @@ export const SearchAppBar: FC<SearchAppBarProps> = ({ onClick, children }) => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Bookshelf
+            <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+              Bookshelf
+            </Link>
           </Typography>
           <Search>
             <SearchIconWrapper>

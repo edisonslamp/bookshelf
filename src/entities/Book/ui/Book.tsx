@@ -1,27 +1,26 @@
 import { FC } from "react";
 import { MultiCard } from "src/shared/ui";
 
-interface SearchedBooks {
+interface BookProps {
   title: string;
   author: string[];
   description: string;
   book_image: string;
   year: string;
+  ToFavoriteIcon?: React.ReactNode;
 }
 
-export const SearchedBooks: FC<SearchedBooks> = ({
+export const Book: FC<BookProps> = ({
   title,
   author,
   description,
   book_image,
   year,
+  ToFavoriteIcon,
 }) => {
-  const handleToFavorites = () => {
-    console.log("handleToFavorites");
-  };
   return (
     <MultiCard
-      handleToFavorites={handleToFavorites}
+      ToFavoriteIcon={ToFavoriteIcon}
       title={title}
       author={author}
       description={description}
