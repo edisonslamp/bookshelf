@@ -26,7 +26,13 @@ export const useBestsellerBooks = () => {
           const response = await axios.get<BookResponse>(
             GoogleBooksUrlByISBN + isbn
           );
-          books.push(response.data.items[0]);
+          books.push({
+            ...response.data.items[0],
+            volumeInfo: {
+              ...response.data.items[0].volumeInfo,
+              isFavorite: false,
+            },
+          });
         }
         setBestsellerBooks(books);
       } catch (error) {

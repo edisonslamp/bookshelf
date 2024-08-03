@@ -10,6 +10,7 @@ export type Books = {
   etag: string;
   selfLink: string;
   volumeInfo: {
+    isFavorite: boolean;
     title: string;
     subtitle: string;
     authors: [string];

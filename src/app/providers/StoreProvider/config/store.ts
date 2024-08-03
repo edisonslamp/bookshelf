@@ -7,6 +7,7 @@ interface BookStore {
   favorites: Books[];
   setBooks: (books: Books[] | undefined) => void;
   setFavorites: (favoriteBook: Books) => void;
+  removeFavorites: (favoriteBook: Books) => void;
 }
 
 const useBookStore = create<BookStore>()(
@@ -17,10 +18,17 @@ const useBookStore = create<BookStore>()(
       setBooks: (books: Books[] | undefined) => set({ books }),
       setFavorites: (favoriteBook: Books) => {
         set((state) =>
-          state.favorites.includes(favoriteBook)
+          state.favorites.some((book) => book.id === favoriteBook.id)
             ? { favorites: [...state.favorites] }
             : { favorites: [...state.favorites, favoriteBook] }
         );
+      },
+      removeFavorites: (favoriteBook: Books) => {
+        set((state) => ({
+          favorites: state.favorites.filter(
+            (book) => book.id !== favoriteBook.id
+          ),
+        }));
       },
     }),
     {
