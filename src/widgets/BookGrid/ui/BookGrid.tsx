@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from "react";
 import useBookStore from "src/app/providers/StoreProvider";
 import { Book } from "src/entities/Book";
 import { ToFavorites } from "src/features/Favorites";
+import { ToWishlist } from "src/features/ToWishlist";
 import { Books } from "src/shared/api";
 
 interface BookGridProps {
@@ -10,10 +11,11 @@ interface BookGridProps {
 }
 export const BookGrid: FC<BookGridProps> = ({ books }) => {
   const favorites = useBookStore((state) => state.favorites);
-  const [favoriteBooks, setFavoriteBooks] = useState<Books[]>([]);
+  const wishlist = useBookStore((state) => state.whishlist);
+  const [sortedBooks, setSortedBooks] = useState<Books[]>([]);
 
   useEffect(() => {
-    setFavoriteBooks(
+    setSortedBooks(
       books.map((book) => {
         return {
           ...book,
@@ -22,11 +24,14 @@ export const BookGrid: FC<BookGridProps> = ({ books }) => {
             isFavorite: favorites.some(
               (favoriteBook) => favoriteBook.id === book.id
             ),
+            isInWishlist: wishlist.some(
+              (wishlistBook) => wishlistBook.id === book.id
+            ),
           },
         };
       })
     );
-  }, [books, favorites]);
+  }, [books, favorites, wishlist]);
 
   return (
     <Grid
@@ -36,13 +41,19 @@ export const BookGrid: FC<BookGridProps> = ({ books }) => {
     >
       <Grid item xs={8}>
         <Grid container justifyContent="center" spacing={1}>
-          {favoriteBooks?.map((book, index) => (
+          {sortedBooks?.map((book, index) => (
             <Grid key={index} item>
               <Book
                 ToFavoriteIcon={
                   <ToFavorites
                     book={book}
                     isAddedToFavorites={book.volumeInfo.isFavorite}
+                  />
+                }
+                ToWishlistIcon={
+                  <ToWishlist
+                    book={book}
+                    isAddedToWishlist={book.volumeInfo.isInWishlist}
                   />
                 }
                 title={book.volumeInfo.title}

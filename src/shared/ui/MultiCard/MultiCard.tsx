@@ -1,4 +1,4 @@
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { CardActionArea, CardActions } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -12,6 +12,7 @@ interface MultiCardProps {
   year: string;
   image: string;
   ToFavoriteIcon?: React.ReactNode;
+  ToWishlistIcon?: React.ReactNode;
 }
 
 export const MultiCard: FC<MultiCardProps> = ({
@@ -21,6 +22,7 @@ export const MultiCard: FC<MultiCardProps> = ({
   year,
   image,
   ToFavoriteIcon,
+  ToWishlistIcon,
 }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -58,9 +60,7 @@ export const MultiCard: FC<MultiCardProps> = ({
         </CardContent>
       </CardActionArea>
       <CardActions sx={{ height: "3rem" }}>
-        <Button size="small" color="primary">
-          Share
-        </Button>
+        {ToWishlistIcon}
         {ToFavoriteIcon}
       </CardActions>
     </Card>
