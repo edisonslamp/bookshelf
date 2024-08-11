@@ -8,6 +8,7 @@ interface BookProps {
   book_image: string;
   year: string;
   ToFavoriteIcon?: React.ReactNode;
+  ToWishlistIcon?: React.ReactNode;
 }
 
 export const Book: FC<BookProps> = ({
@@ -17,10 +18,12 @@ export const Book: FC<BookProps> = ({
   book_image,
   year,
   ToFavoriteIcon,
+  ToWishlistIcon,
 }) => {
   return (
     <MultiCard
       ToFavoriteIcon={ToFavoriteIcon}
+      ToWishlistIcon={ToWishlistIcon}
       title={title}
       author={author}
       description={description}

@@ -11,6 +11,7 @@ export type Books = {
   selfLink: string;
   volumeInfo: {
     isFavorite: boolean;
+    isInWishlist: boolean;
     title: string;
     subtitle: string;
     authors: [string];

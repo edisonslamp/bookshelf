@@ -5,9 +5,12 @@ import { createJSONStorage, persist } from "zustand/middleware";
 interface BookStore {
   books: Books[];
   favorites: Books[];
+  whishlist: Books[];
   setBooks: (books: Books[] | undefined) => void;
   setFavorites: (favoriteBook: Books) => void;
+  setWhishlist: (whishlistBook: Books) => void;
   removeFavorites: (favoriteBook: Books) => void;
+  removeWhishlist: (whishlistBook: Books) => void;
 }
 
 const useBookStore = create<BookStore>()(
@@ -15,6 +18,7 @@ const useBookStore = create<BookStore>()(
     (set) => ({
       books: [],
       favorites: [],
+      whishlist: [],
       setBooks: (books: Books[] | undefined) => set({ books }),
       setFavorites: (favoriteBook: Books) => {
         set((state) =>
@@ -23,6 +27,23 @@ const useBookStore = create<BookStore>()(
             : { favorites: [...state.favorites, favoriteBook] }
         );
       },
+
+      setWhishlist: (whishlistBook: Books) => {
+        set((state) =>
+          state.whishlist.some((book) => book.id === whishlistBook.id)
+            ? { whishlist: [...state.whishlist] }
+            : { whishlist: [...state.whishlist, whishlistBook] }
+        );
+      },
+
+      removeWhishlist: (whishlistBook: Books) => {
+        set((state) => ({
+          whishlist: state.whishlist.filter(
+            (book) => book.id !== whishlistBook.id
+          ),
+        }));
+      },
+
       removeFavorites: (favoriteBook: Books) => {
         set((state) => ({
           favorites: state.favorites.filter(
