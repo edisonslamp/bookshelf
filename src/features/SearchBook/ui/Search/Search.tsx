@@ -39,9 +39,9 @@ export const Search = () => {
 
   const useKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && searchValue !== "") {
-      setSearch("");
       e.currentTarget.blur();
       getBook(searchValue).then(setBook);
+      setSearch("");
       navigate("/book");
     }
   };

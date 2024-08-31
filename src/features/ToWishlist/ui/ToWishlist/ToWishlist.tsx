@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import useBookStore from "src/app/providers/StoreProvider";
 import { Books } from "src/shared/api";
 import { ToWishlistButton } from "src/shared/ui";
@@ -16,6 +16,10 @@ export const ToWishlist: FC<ToWishlistProps> = ({
   const removeWishlist = useBookStore((state) => state.removeWhishlist);
   const [isAdded, setIsAdded] = useState(isAddedToWishlist);
 
+  useEffect(() => {
+    setIsAdded(isAddedToWishlist);
+  }, [isAddedToWishlist]);
+
   const handleOnClick = () => {
     if (isAdded) {
       removeWishlist(book);
@@ -26,10 +30,12 @@ export const ToWishlist: FC<ToWishlistProps> = ({
         volumeInfo: { ...book.volumeInfo, isInWishlist: true },
       });
     }
-    setIsAdded((prev) => !prev);
   };
 
   return (
-    <ToWishlistButton isAddedToWishlist={isAdded} onClick={handleOnClick} />
+    <ToWishlistButton
+      isAddedToWishlist={isAddedToWishlist}
+      onClick={handleOnClick}
+    />
   );
 };

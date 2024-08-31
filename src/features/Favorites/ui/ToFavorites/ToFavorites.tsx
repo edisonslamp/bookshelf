@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import useBookStore from "src/app/providers/StoreProvider";
 import { Books } from "src/shared/api";
 import { FavoriteButton } from "src/shared/ui";
@@ -16,6 +16,10 @@ export const ToFavorites: FC<ToFavoritesProps> = ({
   const removeFavorites = useBookStore((state) => state.removeFavorites);
   const [isFavorite, setIsFavorite] = useState(isAddedToFavorites);
 
+  useEffect(() => {
+    setIsFavorite(isAddedToFavorites);
+  }, [isAddedToFavorites]);
+
   const handleOnClick = () => {
     if (isFavorite) {
       removeFavorites(book);
@@ -26,8 +30,9 @@ export const ToFavorites: FC<ToFavoritesProps> = ({
         volumeInfo: { ...book.volumeInfo, isFavorite: true },
       });
     }
-    setIsFavorite((prev) => !prev);
   };
 
-  return <FavoriteButton isFavorite={isFavorite} onClick={handleOnClick} />;
+  return (
+    <FavoriteButton isFavorite={isAddedToFavorites} onClick={handleOnClick} />
+  );
 };
